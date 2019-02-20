@@ -167,7 +167,7 @@ jobs:
           echo https://github.com/containous/structor/releases/download/v1.3.2/structor_linux-amd64 | wget --output-document=$GOPATH/bin/structor -i -;
           chmod +x $GOPATH/bin/structor;
         - echo "Build documentation";
-          $GOPATH/bin/structor -o janusgraph -r janusgraph \
+          $GOPATH/bin/structor -o farodin91 -r janusgraph \
             --dockerfile-url="https://raw.githubusercontent.com/farodin91/janusgraph/travis-ci/docs.Dockerfile" \
             --menu.js-url="https://raw.githubusercontent.com/farodin91/janusgraph/travis-ci/docs/theme/js/structor-menu.js.gotmpl" \
             --rqts-url="https://raw.githubusercontent.com/containous/structor/master/requirements-override.txt" \ 
