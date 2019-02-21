@@ -88,9 +88,6 @@ nav:
             - JanusGraph with TinkerPop’s Hadoop-Gremlin: advanced-topics/hadoop.md
             - Monitoring JanusGraph: advanced-topics/monitoring.md
             - Migrating from Titan: advanced-topics/migrating.md
-        - Useful Tools:
-            - Advanced TinkerPop: usefultools/advblueprints.md
-            - Generating Artificial Natural Graphs: usefultools/generating.md
         - Connecting to JanusGraph:
             - Introduction: connecting/index.md
             - Using Java: connecting/java.md
