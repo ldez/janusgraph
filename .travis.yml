@@ -187,7 +187,9 @@ jobs:
         github_token: ${GITHUB_TOKEN}
         local_dir: site
         skip_cleanup: true
-      if: branch =~ ^0.2$|^master$|^v([0-9.]+)$
+        on:
+          all_branches: true
+          condition: $TRAVIS_BRANCH =~ ^0.2$|^master$|^v[0-9.]+$
 
   # https://docs.travis-ci.com/user/customizing-the-build#Rows-that-are-Allowed-to-Fail
   allow_failures:

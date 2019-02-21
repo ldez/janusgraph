@@ -162,7 +162,7 @@ Gremlin commands over the wire:
 
 In this case, each Gremlin Server would be configured to connect to the
 Cassandra cluster. The following shows the graph specific fragment of
-the Gremlin Server configuration. Refer to [???](#server) for a complete
+the Gremlin Server configuration. Refer to [JanusGraph Server](../basics/server.md) for a complete
 example and more information on how to configure the server.
 
 ```yaml
