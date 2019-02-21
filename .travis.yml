@@ -175,19 +175,21 @@ jobs:
           echo https://github.com/containous/structor/releases/download/v1.3.2/structor_linux-amd64 | wget --output-document=$GOPATH/bin/structor -i -;
           chmod +x $GOPATH/bin/structor;
         - echo "Build documentation";
-          $GOPATH/bin/structor -o janusgraph -r janusgraph \
-            --dockerfile-url="https://raw.githubusercontent.com/janusgraph/janusgraph/0.2/docs.Dockerfile" \
-            --menu.js-url="https://raw.githubusercontent.com/janusgraph/janusgraph/0.2/docs/theme/js/structor-menu.js.gotmpl" \
+          $GOPATH/bin/structor -o farodin91 -r janusgraph \
+            --dockerfile-url="https://raw.githubusercontent.com/farodin91/janusgraph/mkdocs/docs.Dockerfile" \
+            --menu.js-url="https://raw.githubusercontent.com/farodin91/janusgraph/mkdocs/docs/theme/js/structor-menu.js.gotmpl" \
             --rqts-url="https://raw.githubusercontent.com/containous/structor/master/requirements-override.txt" \ 
-            --exp-branch=0.2 --debug;
+            --exp-branch=mkdocs --debug;
       deploy:
         provider: pages
-        repo: janusgraph/janusgraph
+        repo: farodin91/janusgraph
         edge: false
         github_token: ${GITHUB_TOKEN}
         local_dir: site
         skip_cleanup: true
-      if: branch =~ ^0.2$|^master$|^v([0-9.]+)$
+        on:
+          all_branches: true
+          condition: $TRAVIS_BRANCH =~ ^0.2$|^master$|^v[0-9.]+$
 
   # https://docs.travis-ci.com/user/customizing-the-build#Rows-that-are-Allowed-to-Fail
   allow_failures:
