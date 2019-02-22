@@ -172,12 +172,11 @@ jobs:
         - echo "Updating configuration markdown";
           mvn --quiet clean install -DskipTests=true -pl janusgraph-doc -am;
         - echo "Download documentation generator";
-          curl -sfL https://raw.githubusercontent.com/containous/structor/master/godownloader.sh | bash -s -- -b $GOPATH/bin v1.4.0
+          curl -sfL https://raw.githubusercontent.com/containous/structor/master/godownloader.sh | bash -s -- -b $GOPATH/bin v1.4.2
         - echo "Build documentation";
-          $GOPATH/bin/structor -o farodin91 -r janusgraph \
-            --dockerfile-url="https://raw.githubusercontent.com/farodin91/janusgraph/mkdocs/docs.Dockerfile" \
-            --menu.js-url="https://raw.githubusercontent.com/farodin91/janusgraph/mkdocs/docs/theme/js/structor-menu.js.gotmpl" \
-            --rqts-url="https://raw.githubusercontent.com/containous/structor/master/requirements-override.txt" \ 
+          structor -o farodin91 -r janusgraph \
+            --dockerfile-url="https://raw.githubusercontent.com/farodin91/janusgraph/v0.2/docs.Dockerfile" \
+            --menu.js-url="https://raw.githubusercontent.com/farodin91/janusgraph/v0.2/docs/theme/js/structor-menu.js.gotmpl" \
             --exp-branch=mkdocs --debug;
       deploy:
         provider: pages
