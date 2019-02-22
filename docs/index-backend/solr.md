@@ -541,7 +541,7 @@ curl "http://localhost:8983/solr/admin/cores?action=STATUS&core=$CORE_NAME"
 ```
 
 Now the JanusGraph database and backing Solr core are ready for use. We
-can test it out with the [Graph of the Gods](../intro.md#getting-started) dataset.
+can test it out with the [Graph of the Gods](../intro/getting-started.md) dataset.
 Picking up the Gremlin Console session started above:
 ```groovy
 // Assuming graph = JanusGraphFactory.open('conf/janusgraph-cql-solr.properties')...
@@ -549,7 +549,7 @@ gremlin> GraphOfTheGodsFactory.load(graph)
 ==>null
 ```
 
-Now we can run any of the queries described in [Getting started](../intro.md#getting-started).
+Now we can run any of the queries described in [Getting started](../intro/getting-started.md).
 Queries involving text and geo predicates will be served by Solr. For
 more verbose reporting from JanusGraph and the Solr client, run
 `gremlin.sh -l DEBUG` and issue some index-backed queries.

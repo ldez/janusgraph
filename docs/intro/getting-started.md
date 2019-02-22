@@ -1,137 +1,3 @@
-This section gives an overview of JanusGraph’s architecture and
-benefits, followed by a quick tour of JanusGraph features using a small
-tutorial data set.
-
-## The Benefits of JanusGraph
-
-JanusGraph is designed to support the processing of graphs so large that
-they require storage and computational capacities beyond what a single
-machine can provide. Scaling graph data processing for real time
-traversals and analytical queries is JanusGraph’s foundational benefit.
-This section will discuss the various specific benefits of JanusGraph
-and its underlying, supported persistence solutions.
-
-### General JanusGraph Benefits
-
-- Support for very large graphs. JanusGraph graphs scale with the
-    number of machines in the cluster.
-- Support for very many concurrent transactions and operational graph
-    processing. JanusGraph’s transactional capacity scales with the
-    number of machines in the cluster and answers complex traversal
-    queries on huge graphs in milliseconds.
-- Support for global graph analytics and batch graph processing
-    through the Hadoop framework.
-- Support for geo, numeric range, and full text search for vertices
-    and edges on very large graphs.
-- Native support for the popular property graph data model exposed by
-    [Apache TinkerPop](http://tinkerpop.apache.org/).
-- Native support for the graph traversal language
-    [Gremlin](http://tinkerpop.apache.org/gremlin.html).
-  - Numerous graph-level configurations provide knobs for tuning
-    performance.
-- Vertex-centric indices provide vertex-level querying to alleviate
-    issues with the infamous [super node problem](http://thinkaurelius.com/2012/10/25/a-solution-to-the-supernode-problem/).
-- Provides an optimized disk representation to allow for efficient use
-    of storage and speed of access.
-- Open source under the liberal [Apache 2 license](http://en.wikipedia.org/wiki/Apache_License).
-
-### Benefits of JanusGraph with Apache Cassandra
-
-![](images/cassandra-small.svg)
-
--   [Continuously available](http://en.wikipedia.org/wiki/Continuous_availability)
-    with no single point of failure.
--   No read/write bottlenecks to the graph as there is no master/slave
-    architecture.
-
--   [Elastic scalability](http://en.wikipedia.org/wiki/Elastic_computing) allows
-    for the introduction and removal of machines.
--   Caching layer ensures that continuously accessed data is available
-    in memory.
--   Increase the size of the cache by adding more machines to the
-    cluster.
--   Integration with [Apache Hadoop](http://hadoop.apache.org/).
--   Open source under the liberal Apache 2 license.
-
-### Benefits of JanusGraph with HBase
-
-![](http://hbase.apache.org/images/hbase_logo.png)
-
--   Tight integration with the [Apache Hadoop](http://hadoop.apache.org/) ecosystem.
--   Native support for [strong consistency](http://en.wikipedia.org/wiki/Strong_consistency).
--   Linear scalability with the addition of more machines.
--   [Strictly consistent](http://en.wikipedia.org/wiki/Strict_consistency) reads and writes.
--   Convenient base classes for backing Hadoop
-    [MapReduce](http://en.wikipedia.org/wiki/MapReduce) jobs with HBase
-    tables.
--   Support for exporting metrics via
-    [JMX](http://en.wikipedia.org/wiki/Java_Management_Extensions).
--   Open source under the liberal Apache 2 license.
-
-### JanusGraph and the CAP Theorem
-
-> Despite your best efforts, your system will experience enough faults
-> that it will have to make a choice between reducing yield (i.e., stop
-> answering requests) and reducing harvest (i.e., giving answers based
-> on incomplete data). This decision should be based on business
-> requirements.
->
-> —  [Coda Hale](http://codahale.com/you-cant-sacrifice-partition-tolerance)
-
-When using a database, the [CAP theorem](http://en.wikipedia.org/wiki/CAP_theorem) should be thoroughly
-considered (C=Consistency, A=Availability, P=Partitionability).
-JanusGraph is distributed with 3 supporting backends: [Apache Cassandra](http://cassandra.apache.org/),
- [Apache HBase](http://hbase.apache.org/), and [Oracle Berkeley DB Java Edition](http://www.oracle.com/technetwork/database/berkeleydb/overview/index-093405.html).
-Note that BerkeleyDB JE is a non-distributed database and is typically
-only used with JanusGraph for testing and exploration purposes.
-
-HBase gives preference to consistency at the expense of yield, i.e. the
-probability of completing a request. Cassandra gives preference to
-availability at the expense of harvest, i.e. the completeness of the
-answer to the query (data available/complete data).
-
-## Architectural Overview
-
-JanusGraph is a graph database engine. JanusGraph itself is focused on
-compact graph serialization, rich graph data modeling, and efficient
-query execution. In addition, JanusGraph utilizes Hadoop for graph
-analytics and batch graph processing. JanusGraph implements robust,
-modular interfaces for data persistence, data indexing, and client
-access. JanusGraph’s modular architecture allows it to interoperate with
-a wide range of storage, index, and client technologies; it also eases
-the process of extending JanusGraph to support new ones.
-
-Between JanusGraph and the disks sits one or more storage and indexing
-adapters. JanusGraph comes standard with the following adapters, but
-JanusGraph’s modular architecture supports third-party adapters.
-
--   Data storage:
-    -   [Apache Cassandra](storage-backend/cassandra.md)
-    -   [Apache HBase](storage-backend/hbase.md)
-    -   [Oracle Berkeley DB Java Edition](storage-backend/bdb.md)
--   Indices, which speed up and enable more complex queries:
-    -   [Elasticsearch](index-backend/elasticsearch.md)
-    -   [Apache Solr](index-backend/solr.md)
-    -   [Apache Lucene](index-backend/lucene.md)
-
-Broadly speaking, applications can interact with JanusGraph in two ways:
-
--   Embed JanusGraph inside the application executing
-    [Gremlin](http://tinkerpop.apache.org/docs/{{ tinkerpop_version }}/reference#graph-traversal-steps)
-    queries directly against the graph within the same JVM. Query
-    execution, JanusGraph’s caches, and transaction handling all happen
-    in the same JVM as the application while data retrieval from the
-    storage backend may be local or remote.
-
--   Interact with a local or remote JanusGraph instance by submitting
-    Gremlin queries to the server. JanusGraph natively supports the
-    Gremlin Server component of the [Apache TinkerPop](http://tinkerpop.apache.org/) stack.
-
-![High-level JanusGraph Architecture and
-Context](images/architecture-layer-diagram.svg)
-
-## Getting Started
-
 The examples in this section make extensive use of a toy graph
 distributed with JanusGraph called *The Graph of the Gods*. This graph
 is diagrammed below. The abstract data model is known as a 
@@ -141,7 +7,7 @@ beings and places of the Roman pantheon. Moreover, special text and
 symbol modifiers in the diagram (e.g. bold, underline, etc.) denote
 different schematics/typings in the graph.
 
-![Graph of the Gods](images/graph-of-the-gods-2.png)
+![Graph of the Gods](graph-of-the-gods-2.png)
 
 | visual symbol | meaning |
 | ------------- |-------------|
@@ -151,7 +17,7 @@ different schematics/typings in the graph.
 |hollow-head edge|a functional/unique edge (no duplicates)|
 |tail-crossed edge|a unidirectional edge (can only traverse in one direction)|
 
-### Downloading JanusGraph and Running the Gremlin Console
+## Downloading JanusGraph and Running the Gremlin Console
 
 JanusGraph can be downloaded from the
 [Releases](https://github.com/JanusGraph/janusgraph/releases) section of
@@ -210,20 +76,20 @@ gremlin> [name:'aurelius', vocation:['philosopher', 'emperor']]
     [SQL2Gremlin](http://sql2gremlin.com/), and [Gremlin Recipes](http://tinkerpop.apache.org/docs/{{ tinkerpop_version }}/recipes/)
     for more information about using Gremlin.
 
-### Loading the Graph of the Gods Into JanusGraph
+## Loading the Graph of the Gods Into JanusGraph
 
 The example below will open a JanusGraph graph instance and load *The
 Graph of the Gods* dataset diagrammed above. `JanusGraphFactory`
 provides a set of static `open` methods, each of which takes a
 configuration as its argument and returns a graph instance. This
 tutorial calls one of these `open` methods on a configuration that uses
-the [BerkeleyDB](storage-backend/bdb.md) storage backend and the
-[Elasticsearch](index-backend/elasticsearch.md) index backend, then loads *The Graph of
+the [BerkeleyDB](../storage-backend/bdb.md) storage backend and the
+[Elasticsearch](../index-backend/elasticsearch.md) index backend, then loads *The Graph of
 the Gods* using the helper class `GraphOfTheGodsFactory`. This section
 skips over the configuration details, but additional information about
 storage backends, index backends, and their configuration are available
-in [Storage Backends](storage-backend/index.md), [Index Backends](index-backend/search-predicates.md), and
-[Configuration Reference](basics/configuration-reference.md).
+in [Storage Backends](../storage-backend/index.md), [Index Backends](../index-backend/search-predicates.md), and
+[Configuration Reference](../basics/configuration-reference.md).
 
 ```groovy
 gremlin> graph = JanusGraphFactory.open('conf/janusgraph-berkeleyje-es.properties')
@@ -241,8 +107,7 @@ do the following to the newly constructed graph prior to returning it:
 2. Adds all the vertices to the graph along with their properties.
 3. Adds all the edges to the graph along with their properties.
 
-Please see the [GraphOfTheGodsFactory source
-code](https://github.com/JanusGraph/janusgraph/blob/master/janusgraph-core/src/main/java/org/janusgraph/example/GraphOfTheGodsFactory.java)
+Please see the [GraphOfTheGodsFactory source code](https://github.com/JanusGraph/janusgraph/blob/master/janusgraph-core/src/main/java/org/janusgraph/example/GraphOfTheGodsFactory.java)
 for details.
 
 For those using JanusGraph/Cassandra (or JanusGraph/HBase), be sure to
@@ -274,7 +139,7 @@ gremlin> GraphOfTheGodsFactory.loadWithoutMixedIndex(graph, true)
 gremlin> g = graph.traversal()
 ==>graphtraversalsource[standardjanusgraph[cql:[127.0.0.1]], standard]
 ```
-### Global Graph Indices
+## Global Graph Indices
 
 
 The typical pattern for accessing data in a graph database is to first
@@ -324,7 +189,7 @@ JanusGraph is known as vertex-centric indices. Vertex-centric indices
 are utilized to speed up traversals inside the graph. Vertex-centric
 indices are described later.
 
-#### Graph Traversal Examples
+### Graph Traversal Examples
 
 > [Hercules](http://en.wikipedia.org/wiki/Hercules), son of Jupiter and
 > [Alcmene](http://en.wikipedia.org/wiki/Alcmene), bore super human
@@ -402,7 +267,7 @@ gremlin> g.V(hercules).outE('battled').has('time', gt(1)).inV().values('name').t
 ==>[GraphStep([v[24744]],vertex), VertexStep(OUT,[battled],edge), HasStep([time.gt(1)]), EdgeVertexStep(IN), PropertiesStep([name],value)]
 ```
 
-#### More Complex Graph Traversal Examples
+### More Complex Graph Traversal Examples
 
 > In the depths of Tartarus lives Pluto. His relationship with Hercules
 > was strained by the fact that Hercules battled his pet, Cerberus.
@@ -413,7 +278,7 @@ The Gremlin traversals below provide more examples over *The Graph of
 the Gods*. The explanation of each traversal is provided in the prior
 line as a `//` comment.
 
-##### Cohabiters of Tartarus
+#### Cohabiters of Tartarus
 ```groovy
 gremlin> pluto = g.V().has('name', 'pluto').next()
 ==>v[2048]
@@ -428,7 +293,7 @@ gremlin> g.V(pluto).as('x').out('lives').in('lives').where(neq('x')).values('nam
 ==>cerberus
 ```
 
-##### Pluto’s Brothers
+#### Pluto’s Brothers
 
 ```groovy
 gremlin> // where do pluto's brothers live?
@@ -447,7 +312,7 @@ gremlin> g.V(pluto).out('brother').as('god').out('lives').as('place').select('go
 
 Finally, Pluto lives in Tartarus because he shows no concern for death.
 His brothers, on the other hand, chose their locations based upon their
-love for certain qualities of those locations.
+love for certain qualities of those locations.!
 ```groovy
 gremlin> g.V(pluto).outE('lives').values('reason')
 ==>no fear of death

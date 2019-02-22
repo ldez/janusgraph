@@ -23,44 +23,8 @@ use the latest versions of the software.
 | 0.2.z | 1 | 1.2.z, 2.0.z, 2.1.z, 2.2.z, 3.0.z, 3.11.z | 0.98.z, 1.0.z, 1.1.z, 1.2.z, 1.3.z | 0.9.z, 1.0.0-preZ, 1.0.0 | 1.5-1.7.z, 2.3-2.4.z, 5.y, 6.y | 5.2-5.5.z, 6.2-6.6.z, 7.y | 3.2.z | 1.6.z | 2.10.z | 
 
 ## Release Notes
-
-### Version 0.2.3 (Release Date: March ??, 2019)
-
-```groovy tab='Gradle'
-compile "org.janusgraph:janusgraph-core:0.2.3"
-```
-
-```xml tab='Maven'
-<dependency>
-    <groupId>org.janusgraph</groupId>
-    <artifactId>janusgraph-core</artifactId>
-    <version>0.2.3</version>
-</dependency>
-```
-
-**Tested Compatibility:**
-
--   Apache Cassandra 2.1.20, 2.2.10, 3.0.14, 3.11.0
--   Apache HBase 0.98.24-hadoop2, 1.2.6, 1.3.1
--   Google Bigtable 1.0.0
--   Oracle BerkeleyJE 7.3.7
--   Elasticsearch 1.7.6, 2.4.6, 5.6.5, 6.0.1
--   Apache Lucene 7.0.0
--   Apache Solr 5.5.4, 6.6.1, 7.0.0
--   Apache TinkerPop 3.2.9
--   Java 1.8
-
-For more information on features and bug fixes in 0.2.3, see the GitHub
-milestone:
-
--   <https://github.com/JanusGraph/janusgraph/milestone/9?closed=1>
-
 ### Version 0.2.2 (Release Date: October 9, 2018)
 Documentation: <https://docs.janusgraph.org/0.2.2/index.html>
-
-```groovy tab='Gradle'
-compile "org.janusgraph:janusgraph-core:0.2.2"
-```
 
 ```xml tab='Maven'
 <dependency>
@@ -68,6 +32,10 @@ compile "org.janusgraph:janusgraph-core:0.2.2"
     <artifactId>janusgraph-core</artifactId>
     <version>0.2.2</version>
 </dependency>
+```
+
+```groovy tab='Gradle'
+compile "org.janusgraph:janusgraph-core:0.2.2"
 ```
 
 **Tested Compatibility:**
@@ -90,16 +58,16 @@ milestone:
 ### Version 0.2.1 (Release Date: July 9, 2018)
 Documentation: <https://docs.janusgraph.org/0.2.1/index.html>
 
-```groovy tab='Gradle'
-compile "org.janusgraph:janusgraph-core:0.2.1"
-```
-
 ```xml tab='Maven'
 <dependency>
     <groupId>org.janusgraph</groupId>
     <artifactId>janusgraph-core</artifactId>
     <version>0.2.1</version>
 </dependency>
+```
+
+```groovy tab='Gradle'
+compile "org.janusgraph:janusgraph-core:0.2.1"
 ```
 
 **Tested Compatibility:**
@@ -119,12 +87,19 @@ milestone:
 
 -   <https://github.com/JanusGraph/janusgraph/milestone/5?closed=1>
 
+#### Upgrade Instructions
+##### HBase TTL
+
+In JanusGraph 0.2.0, time-to-live (TTL) support was added for HBase
+storage backend. In order to utilize the TTL capability on HBase, the
+graph timestamps need to be MILLI. If the `graph.timestamps` property is
+not explicitly set to MILLI, the default is MICRO in JanusGraph 0.2.0,
+which does not work for HBase TTL. Since the `graph.timestamps` property
+is FIXED, a new graph needs to be created to make any change of the
+`graph.timestamps` property effective.
+
 ### Version 0.2.0 (Release Date: October 11, 2017)
 Documentation: <https://docs.janusgraph.org/0.2.0/index.html>
-
-```groovy tab='Gradle'
-compile "org.janusgraph:janusgraph-core:0.2.0"
-```
 
 ```xml tab='Maven'
 <dependency>
@@ -132,6 +107,10 @@ compile "org.janusgraph:janusgraph-core:0.2.0"
     <artifactId>janusgraph-core</artifactId>
     <version>0.2.0</version>
 </dependency>
+```
+
+```groovy tab='Gradle'
+compile "org.janusgraph:janusgraph-core:0.2.0"
 ```
 
 **Tested Compatibility:**
@@ -151,116 +130,9 @@ milestone:
 
 -   <https://github.com/JanusGraph/janusgraph/milestone/2?closed=1>
 
-### Version 0.1.1 (Release Date: May 11, 2017)
-Documentation: <https://docs.janusgraph.org/0.1.1/index.html>
+#### Upgrade Instructions
 
-```groovy tab='Gradle'
-compile "org.janusgraph:janusgraph-core:0.1.1"
-```
-
-```xml tab='Maven'
-<dependency>
-    <groupId>org.janusgraph</groupId>
-    <artifactId>janusgraph-core</artifactId>
-    <version>0.1.1</version>
-</dependency>
-```
-
-**Tested Compatibility:**
-
--   Apache Cassandra 2.1.9
--   Apache HBase 0.98.8-hadoop2, 1.0.3, 1.1.8, 1.2.4
--   Google Bigtable 0.9.5.1
--   Oracle BerkeleyJE 7.3.7
--   Elasticsearch 1.5.1
--   Apache Lucene 4.10.4
--   Apache Solr 5.2.1
--   Apache TinkerPop 3.2.3
--   Java 1.8
-
-For more information on features and bug fixes in 0.1.1, see the GitHub
-milestone:
-
--   <https://github.com/JanusGraph/janusgraph/milestone/3?closed=1>
-
-### Version 0.1.0 (Release Date: April 11, 2017)
-Documentation: <https://docs.janusgraph.org/0.1.0/index.html>
-
-```groovy tab='Gradle'
-compile "org.janusgraph:janusgraph-core:0.1.0"
-```
-
-```xml tab='Maven'
-<dependency>
-    <groupId>org.janusgraph</groupId>
-    <artifactId>janusgraph-core</artifactId>
-    <version>0.1.0</version>
-</dependency>
-```
-
-**Tested Compatibility:**
-
--   Apache Cassandra 2.1.9
--   Apache HBase 0.98.8-hadoop2, 1.0.3, 1.1.8, 1.2.4
--   Google Bigtable 0.9.5.1
--   Oracle BerkeleyJE 7.3.7
--   Elasticsearch 1.5.1
--   Apache Lucene 4.10.4
--   Apache Solr 5.2.1
--   Apache TinkerPop 3.2.3
--   Java 1.8
-
-**Features added since version Titan 1.0.0:**
-
--   TinkerPop 3.2.3 compatibility
-
-    -   Includes update to Spark 1.6.1
-
--   Query optimizations: JanusGraphStep folds in HasId and HasContainers
-    can be folded in even mid-traversal
-
--   Support Google Cloud Bigtable as a backend over the HBase interface
-
--   Compatibility with newer versions of backend and index stores
-
-    -   HBase 1.2
-
-    -   BerkeleyJE 7.3.7
-
--   Includes a number of bug fixes and optimizations
-
-For more information on features and bug fixes in 0.1.0, see the GitHub
-milestone:
-
--   <https://github.com/JanusGraph/janusgraph/milestone/1?closed=1>
-
-## Upgrade Instructions
-
-Please follow these instructions when upgrading from Titan or an older
-JanusGraph release.
-
-### Upgrading from Titan 1.0.0, 1.1.0-SNAPSHOT
-
-JanusGraph is based on the latest commit to the `titan11` branch of
-[Titan repo](https://github.com/thinkaurelius/titan).
-
-JanusGraph has made the following changes to Titan, so you will need to
-adjust your code and configuration accordingly:
-
-1.  module names: `titan-*` are now `janusgraph-*`
-
-2.  package names: `com.thinkaurelius.titan` are now `org.janusgraph`
-
-3.  class names: `Titan*` are now `JanusGraph*` except in cases where
-    this would duplicate a word, e.g., `TitanGraph` is simply
-    `JanusGraph` rather than `JanusGraphGraph`
-
-For more information on how to configure JanusGraph to read data which
-had previously been written by Titan refer to [Migration from titan](advanced-topics/migrating.md).
-
-### Upgrading from JanusGraph 0.1.z
-
-#### Elasticsearch
+##### Elasticsearch
 
 JanusGraph 0.1.z is compatible with Elasticsearch 1.5.z. There were
 several configuration options available, including transport client,
@@ -273,17 +145,19 @@ offers only a single configuration option using the REST client.
 The `TRANSPORT_CLIENT` interface has been replaced with `REST_CLIENT`.
 When migrating an existing graph to JanusGraph 0.2.0, the `interface`
 property must be set when connecting to the graph:
-
-    index.search.backend=elasticsearch
-    index.search.elasticsearch.interface=REST_CLIENT
-    index.search.hostname=127.0.0.1
+```conf
+index.search.backend=elasticsearch
+index.search.elasticsearch.interface=REST_CLIENT
+index.search.hostname=127.0.0.1
+```
 
 After connecting to the graph, the property update can be made permanent
 by making the change with `JanusGraphManagement`:
-
-    mgmt = graph.openManagement()
-    mgmt.set("index.search.elasticsearch.interface", "REST_CLIENT")
-    mgmt.commit()
+```groovy
+mgmt = graph.openManagement()
+mgmt.set("index.search.elasticsearch.interface", "REST_CLIENT")
+mgmt.commit()
+```
 
 ##### Node client
 
@@ -328,14 +202,105 @@ The legacy configuration track was not recommended in JanusGraph 0.1.z
 and is no longer supported in JanusGraph 0.2.0. Users should refer to
 the previous sections and migrate to the `REST_CLIENT`.
 
-## Upgrading from JanusGraph 0.2.0
 
-### HBase TTL
+### Version 0.1.1 (Release Date: May 11, 2017)
+Documentation: <https://docs.janusgraph.org/0.1.1/index.html>
 
-In JanusGraph 0.2.0, time-to-live (TTL) support was added for HBase
-storage backend. In order to utilize the TTL capability on HBase, the
-graph timestamps need to be MILLI. If the `graph.timestamps` property is
-not explicitly set to MILLI, the default is MICRO in JanusGraph 0.2.0,
-which does not work for HBase TTL. Since the `graph.timestamps` property
-is FIXED, a new graph needs to be created to make any change of the
-`graph.timestamps` property effective.
+```xml tab='Maven'
+<dependency>
+    <groupId>org.janusgraph</groupId>
+    <artifactId>janusgraph-core</artifactId>
+    <version>0.1.1</version>
+</dependency>
+```
+
+```groovy tab='Gradle'
+compile "org.janusgraph:janusgraph-core:0.1.1"
+```
+
+**Tested Compatibility:**
+
+-   Apache Cassandra 2.1.9
+-   Apache HBase 0.98.8-hadoop2, 1.0.3, 1.1.8, 1.2.4
+-   Google Bigtable 0.9.5.1
+-   Oracle BerkeleyJE 7.3.7
+-   Elasticsearch 1.5.1
+-   Apache Lucene 4.10.4
+-   Apache Solr 5.2.1
+-   Apache TinkerPop 3.2.3
+-   Java 1.8
+
+For more information on features and bug fixes in 0.1.1, see the GitHub
+milestone:
+
+-   <https://github.com/JanusGraph/janusgraph/milestone/3?closed=1>
+
+### Version 0.1.0 (Release Date: April 11, 2017)
+Documentation: <https://docs.janusgraph.org/0.1.0/index.html>
+
+```xml tab='Maven'
+<dependency>
+    <groupId>org.janusgraph</groupId>
+    <artifactId>janusgraph-core</artifactId>
+    <version>0.1.0</version>
+</dependency>
+```
+
+```groovy tab='Gradle'
+compile "org.janusgraph:janusgraph-core:0.1.0"
+```
+
+**Tested Compatibility:**
+
+-   Apache Cassandra 2.1.9
+-   Apache HBase 0.98.8-hadoop2, 1.0.3, 1.1.8, 1.2.4
+-   Google Bigtable 0.9.5.1
+-   Oracle BerkeleyJE 7.3.7
+-   Elasticsearch 1.5.1
+-   Apache Lucene 4.10.4
+-   Apache Solr 5.2.1
+-   Apache TinkerPop 3.2.3
+-   Java 1.8
+
+**Features added since version Titan 1.0.0:**
+
+-   TinkerPop 3.2.3 compatibility
+
+    -   Includes update to Spark 1.6.1
+
+-   Query optimizations: JanusGraphStep folds in HasId and HasContainers
+    can be folded in even mid-traversal
+
+-   Support Google Cloud Bigtable as a backend over the HBase interface
+
+-   Compatibility with newer versions of backend and index stores
+
+    -   HBase 1.2
+
+    -   BerkeleyJE 7.3.7
+
+-   Includes a number of bug fixes and optimizations
+
+For more information on features and bug fixes in 0.1.0, see the GitHub
+milestone:
+
+-   <https://github.com/JanusGraph/janusgraph/milestone/1?closed=1>
+
+#### Upgrade Instructions
+
+JanusGraph is based on the latest commit to the `titan11` branch of
+[Titan repo](https://github.com/thinkaurelius/titan).
+
+JanusGraph has made the following changes to Titan, so you will need to
+adjust your code and configuration accordingly:
+
+1.  module names: `titan-*` are now `janusgraph-*`
+
+2.  package names: `com.thinkaurelius.titan` are now `org.janusgraph`
+
+3.  class names: `Titan*` are now `JanusGraph*` except in cases where
+    this would duplicate a word, e.g., `TitanGraph` is simply
+    `JanusGraph` rather than `JanusGraphGraph`
+
+For more information on how to configure JanusGraph to read data which
+had previously been written by Titan refer to [Migration from titan](advanced-topics/migrating.md).

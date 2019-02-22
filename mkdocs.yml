@@ -44,7 +44,10 @@ markdown_extensions:
 nav:
     - Home: index.md
     - Docs:
-        - Introduction: intro.md
+        - Introduction:
+            - The Benefits of JanusGraph: intro/benefits.md
+            - Getting Started: intro/getting-started.md
+            - Architectural Overview: intro/architectural-overview.md
         - JanusGraph Basics:
             - Configuration: basics/configuration.md
             - Schema and Data Modeling: basics/schema.md
