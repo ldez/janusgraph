@@ -362,7 +362,7 @@ configuration depends on your use case.
     locally to the home directory. Start the Gremlin Console to verify
     that JanusGraph runs successfully. For more information on how to
     unpack JanusGraph and start the Gremlin Console, please refer to the
-    [Getting Started guide](../intro.md#getting-started)
+    [Getting Started guide](../intro/getting-started.md)
 -   Create a configuration file with `vi janusgraph.properties` and add
     the following lines::
 ```conf
