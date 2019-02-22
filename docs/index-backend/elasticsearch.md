@@ -45,7 +45,7 @@ Running Elasticsearch
 JanusGraph supports connections to a running Elasticsearch cluster.
 JanusGraph provides two options for running local Elasticsearch
 instances for getting started quickly. JanusGraph server (see
-[Getting started](../intro.md#getting-started)) automatically starts a local
+[Getting started](../basics/server.md#getting-started)) automatically starts a local
 Elasticsearch instance. Alternatively JanusGraph releases include a full
 Elasticsearch distribution to allow users to manually start a local
 Elasticsearch instance (see [this

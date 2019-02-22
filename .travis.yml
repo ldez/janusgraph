@@ -172,13 +172,11 @@ jobs:
         - echo "Updating configuration markdown";
           mvn --quiet clean install -DskipTests=true -pl janusgraph-doc -am;
         - echo "Download documentation generator";
-          echo https://github.com/containous/structor/releases/download/v1.3.2/structor_linux-amd64 | wget --output-document=$GOPATH/bin/structor -i -;
-          chmod +x $GOPATH/bin/structor;
+          curl -sfL https://raw.githubusercontent.com/containous/structor/master/godownloader.sh | bash -s -- -b $GOPATH/bin v1.4.2
         - echo "Build documentation";
-          $GOPATH/bin/structor -o janusgraph -r janusgraph \
+          structor -o janusgraph -r janusgraph \
             --dockerfile-url="https://raw.githubusercontent.com/janusgraph/janusgraph/0.2/docs.Dockerfile" \
             --menu.js-url="https://raw.githubusercontent.com/janusgraph/janusgraph/0.2/docs/theme/js/structor-menu.js.gotmpl" \
-            --rqts-url="https://raw.githubusercontent.com/containous/structor/master/requirements-override.txt" \ 
             --exp-branch=0.2 --debug;
       deploy:
         provider: pages

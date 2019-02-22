@@ -135,7 +135,8 @@ Deleted logs in /Path/to/janusgraph/janusgraph-0.2.0-hadoop2/log
 JanusGraph Server as a WebSocket Endpoint
 -----------------------------------------
 
-The default configuration described in [Getting Started](../intro.md#server-getting-started) is already a WebSocket configuration.
+The default configuration described in [Getting Started](#getting-started) 
+is already a WebSocket configuration.
 If you want to alter the default configuration to work with your own
 Cassandra or HBase environment rather than use the quick start
 environment, follow these steps:
@@ -202,7 +203,7 @@ bin/gremlin-server.sh ./conf/gremlin-server/socket-gremlin-server.yaml
 JanusGraph Server as a HTTP Endpoint
 ------------------------------------
 
-The default configuration described in [Getting Started](../intro.md#server-getting-started) is a WebSocket configuration. If you
+The default configuration described in [Getting Started](#getting-started) is a WebSocket configuration. If you
 want to alter the default configuration in order to use JanusGraph
 Server as an HTTP endpoint for your JanusGraph database, follow these
 steps:
