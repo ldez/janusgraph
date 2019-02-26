@@ -177,6 +177,7 @@ jobs:
           structor -o farodin91 -r janusgraph \
             --dockerfile-url="https://raw.githubusercontent.com/farodin91/janusgraph/v0.2/docs.Dockerfile" \
             --menu.js-url="https://raw.githubusercontent.com/farodin91/janusgraph/v0.2/docs/theme/js/structor-menu.js.gotmpl" \
+            --menu.css-url="https://raw.githubusercontent.com/farodin91/janusgraph/v0.2/docs/theme/css/structor-menu.css" \
             --exp-branch=mkdocs --debug;
       deploy:
         provider: pages
