@@ -21,6 +21,9 @@ theme:
     logo: 'janusgraph-logomark.svg'
     favicon: 'favicon.ico'
 
+extra_css:
+    - 'theme/structor-menu.css'
+
 extra:
   social:
     - type: github-alt
