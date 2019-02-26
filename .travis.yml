@@ -176,7 +176,7 @@ jobs:
         - echo "Build documentation";
           structor -o janusgraph -r janusgraph \
             --dockerfile-url="https://raw.githubusercontent.com/janusgraph/janusgraph/0.2/docs.Dockerfile" \
-            --menu.js-url="https://raw.githubusercontent.com/janusgraph/janusgraph/0.2/docs/theme/js/structor-menu.js.gotmpl" \
+            --menu.js-url="https://raw.githubusercontent.com/janusgraph/janusgraph/0.2/docs/theme/structor-menu.js.gotmpl" \
             --exp-branch=0.2 --debug;
       deploy:
         provider: pages
