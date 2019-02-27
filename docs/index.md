@@ -68,8 +68,11 @@ Here is a selection of JanusGraph presentations:
 ## Users
 
 The following users have deployed JanusGraph in production.
+<center>
 
 |  | | | |
-|: --- : | : --- : | ||
+|: --- : | : --- : | : --- :  | : --- : |
 |[<img src="images/logos/celum.png" width="150" />](https://www.celum.com/en/graph-driven-and-reactive-architecture)|[<img src="images/logos/compose.png" width="150" />](https://www.compose.com/databases/janusgraph)|[<img src="images/logos/finc.png" width="150" />](https://finc.com)|[<img src="images/logos/gdata.png" width="150" />](https://gdatasoftware.com)|
 |[<img src="images/logos/qihoo_360.png" width="150" />](https://www.360.cn)|[<img src="images/logos/redhat.png" width="150" />](https://www.redhat.com)|[<img src="images/logos/timesinternet.png" width="150" />](http://denmarkblog.timesinternet.in/blogs/graph/times-internet-is-using-janusgraph-as-main-database-in-cms-for-all-newsrooms/articleshow/63709837.cms)|
+
+</center>
