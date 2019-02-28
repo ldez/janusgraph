@@ -99,3 +99,12 @@ To find the Java binary in your environment, run the appropriate command for you
 * Linux/macOS: `which java`
 * Windows: `for %i in (java.exe) do @echo. %~$PATH:i`
 
+## Building documentation
+
+Required:
+
+1. Install `python3` and `pip`
+2. Install requirements using `pip install -r requirements.txt`
+3. For testing run `mkdocs serve`
+4. For build run `mkdocs build`
+
