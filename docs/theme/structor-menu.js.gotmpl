@@ -1,10 +1,20 @@
+{{- $latest := semver "0.0" }}
+{{- range $version := .Versions }}
+	{{- if contains "Latest" $version.Text }}
+		{{- $latest = $version.Text | trimSuffix " Latest" | trimPrefix "v" | semver }}
+	{{- end}}
+{{- end}}
+
 const versions = [
 {{- range $version := .Versions }}
-  {path: "{{ $version.Path }}", text: "{{ $version.Text }}", selected: {{ $version.Selected }} },
+	{{- if eq $version.Text "Experimental" }}
+	{path: "{{ $version.Path }}", text: "v{{ $latest.Major }}.{{ int64 1 | add $latest.Minor }} (unreleased)", selected: {{ $version.Selected }} },
+	{{- else}}
+	{path: "{{ $version.Path }}", text: "{{ $version.Text }}", selected: {{ $version.Selected }} },
+	{{- end}}
 {{- end}}
 ];
 
-  
 // Material theme
 
 function addMaterialMenu(elt, versions) {

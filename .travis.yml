@@ -139,7 +139,7 @@ jobs:
     -
       <<: *STANDARD_TEST_JOB
       env: MODULE='cql' ARGS='-Dtest=**/graphdb/cql/* -Dtest.skip.byteorderedpartitioner=true -Dtest.skip.murmur-serial=true -Dtest.skip.murmur-ssl=true'
-    
+
     - stage: test
       env: COVERITY_ONLY=true
       install: travis_wait mvn --quiet install -DskipTests=true -Dmaven.javadoc.skip=true --batch-mode --show-version;
@@ -164,7 +164,7 @@ jobs:
         - echo "Updating configuration markdown";
           mvn --quiet clean install -DskipTests=true -pl janusgraph-doc -am;
         - docker run --rm -v $PWD:/mkdocs doc-site:mkdocs mkdocs build
-    
+
     - stage: deploy
       install: skip
       script: skip
@@ -172,7 +172,7 @@ jobs:
         - echo "Updating configuration markdown";
           mvn --quiet clean install -DskipTests=true -pl janusgraph-doc -am;
         - echo "Download documentation generator";
-          curl -sfL https://raw.githubusercontent.com/containous/structor/master/godownloader.sh | bash -s -- -b $GOPATH/bin v1.4.2
+          curl -sfL https://raw.githubusercontent.com/containous/structor/master/godownloader.sh | bash -s -- -b $GOPATH/bin v1.5.0
         - echo "Build documentation";
           structor -o janusgraph -r janusgraph \
             --dockerfile-url="https://raw.githubusercontent.com/janusgraph/janusgraph/0.2/docs.Dockerfile" \
