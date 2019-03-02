@@ -172,7 +172,7 @@ jobs:
         - echo "Updating configuration markdown";
           mvn --quiet clean install -DskipTests=true -pl janusgraph-doc -am;
         - echo "Download documentation generator";
-          curl -sfL https://raw.githubusercontent.com/containous/structor/master/godownloader.sh | bash -s -- -b $GOPATH/bin v1.5.0
+          curl -sfL https://raw.githubusercontent.com/containous/structor/master/godownloader.sh | bash -s -- -b $GOPATH/bin v1.6.0
         - echo "Build documentation";
           structor -o janusgraph -r janusgraph \
             --dockerfile-url="https://raw.githubusercontent.com/janusgraph/janusgraph/0.2/docs.Dockerfile" \
